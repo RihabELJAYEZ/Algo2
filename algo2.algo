@@ -1,0 +1,106 @@
+ALGORITHM Algo2
+VAR
+    n1,n2,i,j,sum,x1,x2,sum2,y1,y2,z1,z2 : INTEGER;
+    A : ARRAY_OF INTEGER[n1];
+    B : ARRAY_OF INTEGER[n2];
+    key1 : ARRAY_OF INTEGER[y1];
+    key2 : ARRAY_OF INTEGER[y2];
+    data1 : ARRAY_OF INTEGER[y1];
+    data2 : ARRAY_OF INTEGER[y2];
+    hTab1,hTab2: HASH_TABLE<INTEGER,INTEGER>;
+BEGIN
+    //Problem 1, Solution 1 
+
+    Write("taille de tableau 1")
+    Read(n1);
+    Write("taille de tableau 2")
+    Read(n2);
+    // remplir tableau 1
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+        Write("remplire case N°",i);
+        Read(A[i]);
+    END_FOR
+    // remplir tableau 2
+    FOR j FROM 0 TO n2-1 STEP 1  DO
+        Write("remplire case N°",j);
+        Read(B[i]);
+    END_FOR
+
+    // somme
+    sum := 0;
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+        FOR J FROM 0 TO n2-1 STEP 1  DO
+            IF (A[i] <> B[j]) THEN
+                sum := sum + A[i] +B[j];
+            END_IF
+            IF (A[i] = B[j]) THEN
+                break;
+            END_IF
+        END_FOR
+    END_FOR
+    Write("somme =", sum);
+
+    //Problem 2, Solution 2 
+
+    Write("taille de tableau 1")
+    Read(x1);
+    Write("taille de tableau 2")
+    Read(x2);
+    // remplir tab 1
+    FOR i FROM 0 TO x1-1 STEP 1  DO
+        Write("remplire case N°",i);
+        Read(T[i]);
+    END_FOR
+    // remplir tab 2
+    FOR j FROM 0 TO X2-1 STEP 1  DO
+        Write("remplire case N°",j);
+        Read(R[j]);
+    END_FOR
+
+    // somme
+    sum2 := 0;
+    FOR i FROM 0 TO x1-1 STEP 1  DO
+        FOR J FROM 0 TO x2-1 STEP 1  DO
+            IF (T[i] = R[j]) THEN
+                sum2 := sum2 + 2*A[i];
+                break;
+            END_IF
+            
+        END_FOR
+    END_FOR
+    Write("somme =", sum2);
+
+    // Part 2 hashtab
+
+    Write("taille de htab 1")
+    Read(y1);
+    Write("taille de htab 2")
+    Read(y2);
+    // remplir htab 1
+    FOR i FROM 0 TO y1-1 STEP 1  DO
+        Write("remplit htab1:");
+        Read(key1[i]);
+        Read(data1[i]);
+        hTab1.insert(key1[i],data1[i]) ;
+    END_FOR
+    // remplir htab 2
+    FOR j FROM 0 TO y2-1 STEP 1  DO
+        Write("remplire htab2",j);
+        Read(key2[j]);
+        Read(data2[j]); 
+        hTab2.insert(key2[j],data2[j]) ;
+    END_FOR
+    // somme ..........
+    s1:=0;
+    FOR i FROM 0 TO Y1-1 STEP 1  DO
+        FOR J FROM 0 TO y2-1 STEP 1  DO
+            IF (htab1.lookup(data1[i]) = htab1.lookup(data2[i])) THEN
+            s1 := s1 +  htab1.get(data1[i]);
+            ELSE
+            break;
+        END_IF
+        
+        END_FOR
+    END_FOR
+
+END
